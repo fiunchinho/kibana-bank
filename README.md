@@ -63,5 +63,8 @@ Options:
 ```
 
 ## Kibana
-If you don't know Kibana, ![this is what it looks like](https://cdn.discourse.org/elastic/uploads/default/original/2X/2/26bac5dd232e4117c7977c995ee069a18cf95499.png).
+If you don't know Kibana, this is what it looks like
+
+![this is what it looks like](https://cdn.discourse.org/elastic/uploads/default/original/2X/2/26bac5dd232e4117c7977c995ee069a18cf95499.png)
+
 There is an example dashboard in the repository. You can import the `dashboard.json` into Kibana to get it, or you can build your own visualizations and dashboard.
