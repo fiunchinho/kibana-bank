@@ -1,0 +1,12 @@
+elasticsearch:
+host: http://192.168.99.100:9200
+index_name: financial
+  mapping: transaction
+tags:
+  rent:
+    - Real State Co.
+shopping:
+    - El corte ingles
+  work:
+    - Github
+    - Amazon Web Services

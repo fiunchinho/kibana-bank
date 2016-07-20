@@ -1,0 +1,4 @@
+vendor
+xls/
+*.xls
+config.yml
