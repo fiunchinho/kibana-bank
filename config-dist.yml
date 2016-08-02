@@ -1,11 +1,11 @@
 elasticsearch:
-host: http://localhost:9200
-index_name: financial
+  host: http://localhost:9200
+  index_name: financial
   mapping: transaction
 tags:
   rent:
     - Real State Co.
-shopping:
+  shopping:
     - El corte ingles
   work:
     - Github
