@@ -10,4 +10,4 @@ while ! nc -z localhost 9200; do
   sleep 0.1 # wait for 1/10 of the second before check again
 done
 
-./bin/bank import -v
+./bin/bank import $1 -v
