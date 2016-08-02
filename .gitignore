@@ -4,3 +4,4 @@ xls/
 config.yml
 .idea
 .DS_Store
+!/test/resources/*/*.xls
