@@ -2,6 +2,7 @@
 
 namespace Bank;
 
+use Bank\Parser\BankParserNotFoundException;
 use Bank\Parser\Ing;
 use Bank\Persistence\ElasticSearch;
 use Elasticsearch\ClientBuilder;
@@ -20,6 +21,11 @@ class ImportCommand extends Command
         $this
             ->setName('import')
             ->setDescription('Import transactions')
+            ->addArgument(
+                'bank',
+                InputArgument::REQUIRED,
+                'Bank name'
+            )
             ->addArgument(
                 'path',
                 InputArgument::OPTIONAL,
@@ -97,7 +103,8 @@ class ImportCommand extends Command
      */
     private function parse(InputInterface $input, array $config)
     {
-        $parsed_transactions = (new Ing())->parseTransactions($input->getArgument('path'));
+        $bankParser = $this->createBankParser($input, $config);
+        $parsed_transactions = $bankParser->parseTransactions($input->getArgument('path'));
 
         if ($input->getOption('expenses-only')) {
             $parsed_transactions = $parsed_transactions->expenses();
@@ -125,5 +132,14 @@ class ImportCommand extends Command
             $output->writeln("<info>" . $untagged . " transactions are untagged</info>");
             $output->writeln("<info>" . $tagged_revenue . " tagged revenues</info>");
         }
+    }
+
+    private function createBankParser(InputInterface $input, array $config)
+    {
+        $bank = $input->getArgument('bank');
+        if(empty($config['parsers'][$bank])) {
+            throw new BankParserNotFoundException('Bank parser not found!');
+        }
+        return new $config['parsers'][$bank];
     }
 }

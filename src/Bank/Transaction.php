@@ -8,6 +8,7 @@ use DateTime;
 class Transaction
 {
     const EXPENSE = 'expense';
+
     const REVENUE = 'revenue';
 
     /**

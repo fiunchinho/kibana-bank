@@ -1,12 +1,17 @@
 elasticsearch:
-host: http://192.168.99.100:9200
-index_name: financial
+  host: http://localhost:9200
+  index_name: financial
   mapping: transaction
+
 tags:
   rent:
     - Real State Co.
-shopping:
+  shopping:
     - El corte ingles
   work:
     - Github
     - Amazon Web Services
+
+parsers:
+  ing: \Bank\Parser\Ing
+  lacaixa: \Bank\Parser\LaCaixa
